@@ -1,69 +1,17 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import CategoryCard from "@/components/CategoryCard";
+import Hero from "@/components/Hero";
+import ProductGrid from "@/components/ProductGrid";
+import ProductSearch from "@/components/ProductSearch";
+import brands from "@/data/brands";
+import categories from "@/data/categories";
+import { getFeaturedProducts } from "@/lib/catalog";
+import { pageMetadata } from "@/lib/metadata";
+import { getWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/Icons";
+
+export const metadata = pageMetadata({ title: "Auto spare parts in Abossey Okai, Ghana", description: "Browse Nana Boateng Auto Parts sample catalogue and contact our team to confirm part fitment and availability.", path: "/" });
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <><Hero /><section className="trust-strip" aria-label="Service highlights"><div className="container trust-grid"><p><b>01</b> Quality-focused options</p><p><b>02</b> Parts for major makes</p><p><b>03</b> Fitment guidance</p><p><b>04</b> Abossey Okai based</p></div></section><section className="search-section"><div className="container"><div className="section-heading"><p className="eyebrow">FIND A PART</p><h2>Start with your vehicle.</h2></div><ProductSearch /></div></section><section className="parts-section"><div className="container"><div className="section-intro"><div><p className="eyebrow">WHAT WE STOCK</p><h2>Built for the road ahead.</h2></div><p>Browse sample categories, then ask us to confirm the correct part for your vehicle.</p></div><div className="parts-grid">{categories.map((category, index) => <CategoryCard key={category.slug} category={category} index={index} />)}</div><Link className="button button-dark section-action" href="/products">View all sample parts <span aria-hidden="true">↗</span></Link></div></section><section className="featured-section"><div className="container"><div className="section-intro"><div><p className="eyebrow">SAMPLE CATALOGUE</p><h2>Featured parts.</h2></div><p>Prices shown are sample prices for owner review. Contact us to confirm availability and fitment.</p></div><ProductGrid products={getFeaturedProducts()} /></div></section><section className="how-section"><div className="container how-grid"><div><p className="eyebrow">HOW TO FIND THE RIGHT PART</p><h2>Send the details that matter.</h2></div><ol><li><b>01</b><span>Tell us your vehicle make, model and year.</span></li><li><b>02</b><span>Send a photo, old sample or part number if you have one.</span></li><li><b>03</b><span>We will help confirm fitment and availability.</span></li></ol></div></section><section className="about-section"><div className="container about-grid"><div className="about-panel"><p className="eyebrow">THE NANA BOATENG DIFFERENCE</p><h2>Clear advice.<br /><em>Reliable parts.</em></h2><p>We know the right part matters. Bring your old sample, a photo, or your vehicle details and our team will make your search easier.</p><Link className="text-link" href="/about">About our service <span aria-hidden="true">↗</span></Link></div><div className="makes-panel"><p>WE SUPPORT PARTS FOR</p><div className="makes-list">{brands.map((brand) => <span key={brand}>{brand}</span>)}</div><small>And many more vehicle makes. Contact us to confirm availability and fitment.</small></div></div></section><section className="whatsapp-cta"><div className="container cta-wrap"><div><p className="eyebrow">NEED HELP?</p><h2>Let’s get you the right part.</h2><p>Tell us what you are looking for and include your vehicle details.</p></div><a className="button button-red" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer"><WhatsAppIcon aria-hidden="true" /> Chat on WhatsApp</a></div></section></>;
 }

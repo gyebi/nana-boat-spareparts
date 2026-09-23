@@ -1,0 +1,7 @@
+import { pageMetadata } from "@/lib/metadata";
+import { getWhatsAppLink, whatsappNumber } from "@/lib/whatsapp";
+import { LocationIcon, PhoneIcon, WhatsAppIcon } from "@/components/Icons";
+
+export const metadata = pageMetadata({ title: "Contact us", description: "Contact Nana Boateng Auto Parts in Abossey Okai to confirm vehicle-part fitment and availability.", path: "/contact" });
+
+export default function ContactPage() { return <section className="page-section"><div className="container"><p className="eyebrow">CONTACT</p><h1 className="page-title">Let’s get you the right part.</h1><p className="page-lede">For the quickest help, send your vehicle make, model, year and the part you need on WhatsApp.</p><div className="contact-details contact-page-details"><a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer"><span><WhatsAppIcon aria-hidden="true" /> WhatsApp</span><b>+{whatsappNumber}</b></a><a href="mailto:nboateng237@outlook.com"><span>Email us</span><b>nboateng237@outlook.com</b></a><a href="tel:+233532887036"><span><PhoneIcon aria-hidden="true" /> Call us</span><b>+233 53 288 7036</b></a><div><span><LocationIcon aria-hidden="true" /> Visit us</span><b>Near Bethel Modern Prep. School,<br />Abossey Okai.</b></div></div><p className="placeholder-note">Phone, email, address, opening hours and WhatsApp number above are pending owner confirmation before launch.</p></div></section>; }

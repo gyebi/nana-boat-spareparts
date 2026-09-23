@@ -1,0 +1,1 @@
+export default function Loading() { return <section className="page-section"><div className="container loading-state" aria-live="polite"><p className="eyebrow">NANA BOATENG AUTO PARTS</p><p>Loading sample catalogue…</p></div></section>; }

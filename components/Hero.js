@@ -1,0 +1,11 @@
+import Link from "next/link";
+import { WhatsAppIcon } from "@/components/Icons";
+import { getWhatsAppLink } from "@/lib/whatsapp";
+
+function PartsIllustration() {
+  return <svg className="parts-illustration" viewBox="0 0 600 480" aria-hidden="true"><defs><linearGradient id="metal" x1="0" x2="1"><stop stopColor="#fff" /><stop offset=".45" stopColor="#b7bec5" /><stop offset="1" stopColor="#f8fafb" /></linearGradient><linearGradient id="red-metal" x1="0" x2="1"><stop stopColor="#8e1018" /><stop offset=".5" stopColor="#e11b24" /><stop offset="1" stopColor="#a70c14" /></linearGradient></defs><circle cx="280" cy="236" r="180" fill="none" stroke="url(#metal)" strokeWidth="38" /><circle cx="280" cy="236" r="112" fill="#15232f" stroke="#e9edf0" strokeWidth="12" /><circle cx="280" cy="236" r="55" fill="url(#red-metal)" stroke="#f5f5f5" strokeWidth="8" />{[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => <line key={angle} x1="280" y1="236" x2="280" y2="124" stroke="#d7dde1" strokeWidth="16" strokeLinecap="round" transform={`rotate(${angle} 280 236)`} />)}<path d="M80 346 C138 290 175 320 206 366" fill="none" stroke="url(#red-metal)" strokeWidth="23" strokeLinecap="round" /><path d="M366 92 C430 47 488 77 531 137" fill="none" stroke="url(#metal)" strokeWidth="25" strokeLinecap="round" /></svg>;
+}
+
+export default function Hero() {
+  return <section className="hero"><div className="hero-sweep" /><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow">IS ME ENTERPRISE · ABOSSEY OKAI</p><h1>Parts that keep <em>Ghana moving.</em></h1><p className="hero-text">Your dependable source for automobile spare parts. Browse our sample catalogue or send your vehicle details and we will help you find the right fit.</p><div className="hero-actions"><a className="button button-red" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer"><WhatsAppIcon aria-hidden="true" /> Chat on WhatsApp</a><Link className="button button-outline" href="/products">Explore our parts</Link></div><p className="hero-note">Contact us to confirm availability and fitment.</p></div><div className="hero-art"><PartsIllustration /><div className="art-label">Quality parts.<br />Trusted advice.</div></div></div></section>;
+}
